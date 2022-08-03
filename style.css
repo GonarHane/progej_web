@@ -1,0 +1,22 @@
+body{
+    border: 10px;border-color:brown;
+    background-color: aqua;
+}
+table
+{
+    border-color:brown;
+    height: 100%;
+    width: 100%;
+    border-collapse: collapse;
+}
+td, th /* Mettre une bordure sur les td ET les th */
+{
+    border: 1px solid black;
+}
+tr
+{
+    width: 50%;
+}
+caption{
+    color: brown;
+}
