@@ -1,22 +1,36 @@
-body{
-    border: 10px;border-color:brown;
-    background-color: aqua;
-}
-table
+
+.block
 {
-    border-color:brown;
-    height: 100%;
+    display: flex;
+
+    
+}
+.gonar
+{
+
+    border: 1px;
+    height: 200px;
     width: 100%;
-    border-collapse: collapse;
+    margin: 20px;
+
+    
+   background-color: rgb(230, 159, 6);
 }
-td, th /* Mettre une bordure sur les td ET les th */
-{
-    border: 1px solid black;
+h1{
+    display: block;
+    background-color: aqua;
+    text-align: center; 
 }
-tr
-{
-    width: 50%;
+.general{
+    background-color: brown;
 }
-caption{
-    color: brown;
+p{
+    transform: rotate(90deg);
+    text-align: center;
 }
+body{
+    background-color: aquamarine;
+}
+
+    
+
