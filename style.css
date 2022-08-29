@@ -75,5 +75,9 @@ img{
     width: 100%;
     background-color: blueviolet;
 }
+h1{
+    justify-content: center;
+    text-align: center;
+}
     
 
