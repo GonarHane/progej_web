@@ -15,9 +15,10 @@ function changerDeCouleur(){
     }
 }   
 
-
+/* vérification saisie */
 const saisie = document.getElementsByClassName('form-control')
 const submitBtn = document.getElementById('submit')
+const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/; /* les valeurs de email */
 let donnee = {}
 let infos = []
 for(let i = 0; i<saisie.length;i++){
@@ -29,12 +30,23 @@ for(let i = 0; i<saisie.length;i++){
 }
 submitBtn.addEventListener('click', (e)=> {
     e.preventDefault()
-    for(let i = 0; i<saisie.length;i++){
+    for(let i = 0; i<saisie.length;i++){ /* parcourir le formulaire */
         let affichErreur = document.getElementById(saisie[i].id+'-erreur');
         if (saisie[i].value === "") {
             affichErreur.innerHTML = "<p>Ce champ est requis</p>"
-        } else {
-            affichErreur.innerHTML = ""
+        }
+        if(saisie[i].id === "email" && !regexEmail.test(saisie[i].value)){ /* vérifier mail */
+            affichErreur.innerHTML = "<p>Mail incorrect</p>"
+        }
+        if (saisie[i].value !== "" && regexEmail.test(saisie[i].value)) {
+            const result = document.getElementById("resultat");
+ 
+            result.innerHTML = `
+              <p>prenom: ${donnee.prenom}</p>
+              <p>nom: ${donnee.nom}</p>
+              <p>email: ${donnee.email}</p>
+              <p>message: ${donnee.message}</p>
+              `;
         }
     }
 })
@@ -42,27 +54,22 @@ infos.push(donnee)
 console.table(infos) 
 
 
-/* const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/; */
+/* var validation = document.getElementById('submit');
+var mail_v = document.getElementById('email');
+const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+validation.addEventListener('click',f_valid);
 
-submitBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-  if (
-    (donnee.nom && donnee.prenom && donnee.email && donnee.telephone && donnee.message) ||
-    regexEmail.test(data.email)
-  ) {
-    submitBtn.disabled = false;
-  } else {
-    submitBtn.disabled = true;
-  }
-  infos.push(donnee);
-  const result = document.getElementById("resultat");
- 
-  result.innerHTML = `
-    <p>prenom: ${donnee.prenom}</p>
-    <p>nom: ${donnee.nom}</p>
-    <p>email: ${donnee.email}</p>
-    <p>telephone: ${donnee.telephone}</p>
-    <p>message: ${donnee.message}</p>
-    `;
-  console.log(infos);
-});
+function f_valid(e) {
+    if (mail.validity.ValueMissing)
+     {e.preventDefault();
+
+        mail_v.textContent='mail manquant';
+    } /* else if (regexEmail.test(mail.vallue)==false){
+        event.preventDefault();
+        mail_v.textContent='format invalide';
+        
+        
+    } 
+    
+} */
+
