@@ -31,17 +31,17 @@ for(let i = 0; i<saisie.length;i++){
 submitBtn.addEventListener('click', (e)=> {
     e.preventDefault()
     for(let i = 0; i<saisie.length;i++){ /* parcourir le formulaire */
-        let affichErreur = document.getElementById(saisie[i].id+'-erreur');
+        let affichErreur = document.getElementById(saisie[i].id+'-erreur'); /* vérification de champ */
         if (saisie[i].value === "") {
             affichErreur.innerHTML = "<p>Ce champ est requis</p>"
         }
         if(saisie[i].id === "email" && !regexEmail.test(saisie[i].value)){ /* vérifier mail */
             affichErreur.innerHTML = "<p>Mail incorrect</p>"
         }
-        if (saisie[i].value !== "" && regexEmail.test(saisie[i].value)) {
+        if (saisie[i].value !== "" && regexEmail.test(saisie[i].value)) { /* mail pas vide et saisi correspond au regexEmail */
             const result = document.getElementById("resultat");
- 
-            result.innerHTML = `
+                                                                         
+            result.innerHTML = `                                          
               <p>prenom: ${donnee.prenom}</p>
               <p>nom: ${donnee.nom}</p>
               <p>email: ${donnee.email}</p>
@@ -54,22 +54,4 @@ infos.push(donnee)
 console.table(infos) 
 
 
-/* var validation = document.getElementById('submit');
-var mail_v = document.getElementById('email');
-const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-validation.addEventListener('click',f_valid);
-
-function f_valid(e) {
-    if (mail.validity.ValueMissing)
-     {e.preventDefault();
-
-        mail_v.textContent='mail manquant';
-    } /* else if (regexEmail.test(mail.vallue)==false){
-        event.preventDefault();
-        mail_v.textContent='format invalide';
-        
-        
-    } 
-    
-} */
 
